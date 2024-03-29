@@ -3,6 +3,8 @@ import Card from "../../Components/Card/Card";
 import {LuLoader} from "react-icons/lu"
 import Highlights from "./Highlights";
 import Slide from "../../Components/Slide/Slide";
+import { translator } from "../../Utils/translate";
+
 
 const apiUrl = import.meta.env.VITE_API
 
@@ -33,6 +35,7 @@ function Home() {
 
     const increaseMovies = ()=>{
         setLoading(false);
+        console.log(translator("vida em um ano"))
         setVisibleMovies(preVisibleMovies => preVisibleMovies + 6);  
         setLoading(true);
     }

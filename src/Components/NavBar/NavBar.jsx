@@ -55,7 +55,7 @@ function NavBar() {
             
             <nav className="mt-0 w-full">
                 <section className="flex justify-center mt-4">
-                <GlobalForm/>
+                <GlobalForm onClick={toggleMenu}/>
                 </section>
                 
                 <ul className="list-none flex flex-col text-start mt-4 text-2xl px-4">
@@ -71,7 +71,7 @@ function NavBar() {
                         
                         className="relative cursor-pointer bg-grayV2 p-2">More Categories 
                         <IoIosArrowDown className="ml-4 inline"/> 
-                        {(showSubMenu && <SubMenu/>)} 
+                        {(showSubMenu && <SubMenu />)} 
                     </li>
                 </ul>
             </nav>

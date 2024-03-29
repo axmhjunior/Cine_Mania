@@ -1,12 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom"
 import Description from "./Description";
 import TorrentsInfo from "./TorrentsInfo";
 import Suggestion from "./Suggestion";
+import { translator } from "../../Utils/translate";
 
 const apiUrl = import.meta.env.VITE_MOVIE_DETAILS
-
 
 function Movie() {
 
@@ -14,6 +14,8 @@ function Movie() {
     const [gender, setGender] = useState([]);
     const [genreName, setGenreName] = useState([]);
     const {id} = useParams();
+    const [text, setText] = useState();
+    const navigate = useNavigate();
     
     const getMovie = async (url) => {
         const res = await fetch(url);
@@ -21,6 +23,12 @@ function Movie() {
         setMovies(data.data.movie);
         setGender(data.data.movie.genres);  
         setGenreName(data.data.movie.genres[0]);          
+    }
+
+    const translate = async (catText) =>{
+        const translatedText = await translator(catText);
+        navigate(`/${translatedText}`);
+
     }
 
     useEffect(()=>{
@@ -31,11 +39,11 @@ function Movie() {
     return ( 
         
         <div className="max-w-7xl p-3 mx-auto mt-1">
-            <section className="flex flex-wrap text-lg mb-8 w-full">
+            <section className="flex flex-wrap text-lg mb-8 w-11/12">
                 <Link to={"/"} className="text-gray">Home</Link> <p className="ml-2">&gt;</p> 
                 
-                {gender.map((item, index) =><><Link key={index} to={`/${item}`} 
-                className="text-gray">{item}</Link> <p className="mx-2" > &gt;</p> </> )} 
+                {gender.map((item, index) =><><button onClick={()=> translate(item)} key={index} 
+                className="text-gray">{item}</button> <p className="mx-2" > &gt;</p> </> )} 
                 <p>{movies.title} </p>  
             </section>
 
@@ -48,13 +56,13 @@ function Movie() {
                     </section>                             
                         <section className="mt-2 flex flex-col">
                             
-                            <section className="h-auto sm:w-full sm:flex flex-wrap">
+                            <section className="h-auto w-11/12 sm:w-full sm:flex flex-wrap">
                            {
-                           gender.map((item, index)=>(<Link to={`/${item}`} key={index}
+                           gender.map((item, index)=>(<button onClick={()=> translate(item)} key={index}
                             className="bg-blue border mr-2 p-2 w-fit rounded-lg mt-4">
                             {item}
-                            </Link>))
-                            }
+                            </button>))
+                            } 
                            </section>
                            
                             <TorrentsInfo data={movies} />

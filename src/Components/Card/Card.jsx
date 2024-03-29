@@ -11,7 +11,7 @@ function Card({data}) {
                 </section>
                 <section className="w-64 sm:w-36">
                     <p className="text-xs sm:text-base md:text-xl">Year {data.year}  -  <IoIosStar className="inline -mt-1"/>  {data.rating}</p>
-                    <h3 className="text-2xl sm:text-xl md:text-3xl">{data.title}</h3>
+                    <h3 className="text-2xl sm:text-xl md:text-3xl">{data.title_english}</h3>
                 </section>
                 </Link>
         </div>

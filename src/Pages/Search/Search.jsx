@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Card from "../../Components/Card/Card";
 import Movie404 from "../../Errors/Movie404";
 import {LuLoader} from "react-icons/lu"
+import { translator } from "../../Utils/translate";
 
 
 const apiUrl = import.meta.env.VITE_API
@@ -14,6 +15,7 @@ function Search() {
     const [movies, setMovies] = useState([]);
     const [filterMovies, setFilterMovies] = useState([]);
     const query = searchParams.get("q");
+    const [text, setText] = useState();
     const [visibleMovies, setVisibleMovies] = useState(21);
 
 
@@ -29,9 +31,14 @@ function Search() {
         setMovies(filterMovies);
     }
     }
+    const translate = async ()=>{
+        const translatedText = await translator(query);
+        setText(translatedText)
+    }
 
     useEffect(()=>{
-        const urlMovie = (`${apiUrl}?limit=50&query_term=${query}`);
+        translate()
+        const urlMovie = (`${apiUrl}?limit=50&query_term=${text}`);
         getMovie(urlMovie);
     },[query, movies, filterMovies]);
 
