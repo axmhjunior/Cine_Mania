@@ -35,11 +35,11 @@ function Categories() {
 
     return ( 
 
-        <div className="max-w-7xl  mx-auto mt-8">
+        <div className="max-w-7xl mx-auto mt-8">
             <h3 className="text-3xl mb-4">Categorie: {categorie}</h3>
             {(loadingPage) ? "" : (<section className="flex justify-around">
                 <section className="flex flex-col items-center">
-                    <><section className="grid grid-cols-3  sm:grid-cols-2 sm:gap-2 gap-8 sm:items-center">
+                    <><section className="grid grid-cols-3 sm:p-3 sm:grid-cols-2 sm:gap-2 gap-8 sm:items-center">
                          {movies.slice(0, visibleMovies).map((item)=> <Card key={item.id} data={item} />)}
                     </section>
 

@@ -23,7 +23,7 @@ function Home() {
 
         setFilterMovies(data.data.movies); 
         const newList = filterMovies.filter(item => ((item.torrents.length != 0) && (item.genres.length < 7)))
-        setMovies(newList)
+        setMovies(newList);
         setLoadingPage(false);
     }
 
@@ -35,18 +35,17 @@ function Home() {
 
     const increaseMovies = ()=>{
         setLoading(false);
-        console.log(translator("vida em um ano"))
         setVisibleMovies(preVisibleMovies => preVisibleMovies + 6);  
         setLoading(true);
     }
 
     return ( 
             
-        <div className="max-w-7xl  mx-auto mt-8">
+        <div className="max-w-7xl mx-auto mt-8">
             <Slide/>
 {   (loadingPage) ? "" :  ( <section className="mt-8 flex sm:flex-col justify-around">
                 <section className="flex flex-col items-center">
-                    <section className="grid grid-cols-3 sm:grid-cols-2 md:grid-cols-2 sm:gap-2 gap-8 sm:items-center">
+                    <section className="grid grid-cols-3 sm:grid-cols-2 sm:p-3 md:grid-cols-2 sm:gap-2 gap-8 sm:items-center">
                         {movies.slice(0, visibleMovies).map((item)=> <Card key={item.id} data={item} />)}
                     </section>
                 {(loading) ? (<button onClick={increaseMovies} 

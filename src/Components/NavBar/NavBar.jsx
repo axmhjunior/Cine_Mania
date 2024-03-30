@@ -71,7 +71,7 @@ function NavBar() {
                         
                         className="relative cursor-pointer bg-grayV2 p-2">More Categories 
                         <IoIosArrowDown className="ml-4 inline"/> 
-                        {(showSubMenu && <SubMenu />)} 
+                        {(showSubMenu && <SubMenu onClick={toggleMenu}/>)} 
                     </li>
                 </ul>
             </nav>

@@ -10,12 +10,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "bing-translate-api": "^4.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.0.1",
     "react-router-dom": "^6.22.2",
     "styled-components": "^6.1.8",
-    "swiper": "^11.0.7"
+    "swiper": "^11.0.7",
+    "translate": "^3.0.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.55",

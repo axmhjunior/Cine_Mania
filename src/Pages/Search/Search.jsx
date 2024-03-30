@@ -57,7 +57,7 @@ function Search() {
             {(loadingPage) ? "" : (<section className="flex justify-around">
                 <section className="flex flex-col items-center">
                     {(!movies) ? <Movie404/> : 
-                    <><section className="grid grid-cols-3  sm:grid-cols-2 sm:gap-2 gap-8 sm:items-center">
+                    <><section className="grid grid-cols-3 sm:p-3 sm:grid-cols-2 sm:gap-2 gap-8 sm:items-center">
                          {movies.slice(0, visibleMovies).map((item)=> <Card key={item.id} data={item} />)}
                     </section>
                     {(visibleMovies < movies.length) &&  ((loadingMovies) ? (<button onClick={increaseMovies} 
